@@ -2,6 +2,7 @@
 
 Basic website that shows all IdPs, along with their Sirtfi status, and hosts a Sirtfi-compliant-only metadata file. Updated every time a cron job is run. 
 
+## License
 Copyright 2017 CERN
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
