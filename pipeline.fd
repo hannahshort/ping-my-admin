@@ -1,0 +1,17 @@
+### Load eduGAIN Metadata ###
+- load:
+  # Load from the eduGAIN Metadata URL
+  - http://mds.edugain.org/feed-sha256.xml as edugain-md certs/eduGAIN-signer-ca.pem
+   
+  
+### Select only the Entities that assert Sirtfi Compliance
+- select:
+  - "edugain-md!//md:EntityDescriptor[md:Extensions/mdattr:EntityAttributes/saml:Attribute/@Name='urn:oasis:names:tc:SAML:attribute:assurance-certification' and md:Extensions/mdattr:EntityAttributes/saml:Attribute/saml:AttributeValue='https://refeds.org/sirtfi']"
+- finalize:
+    ID: "sirtfi"
+- sign:
+    key: /etc/grid-security/hostkey.pem
+    cert: /etc/grid-security/hostcert.pem
+- publish: "/var/www/sirtfi/sirtfi-metadata.xml"
+- stats
+
